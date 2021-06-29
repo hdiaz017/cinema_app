@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../app/hooks';
 
 import {
@@ -16,7 +16,14 @@ export const MovieCard = () => {
       <MoviesDiv>
          {movies.map((m) => (
             <MovieCardDiv>
-               <MovieImage src={m.url} alt={m.title} key={m.id} />
+               <Link to={`./movie/${m.title.replace(/\s/g, '')}`}>
+                  <MovieImage
+                     src={m.url}
+                     alt={m.title}
+                     key={m.id}
+                     onClick={() => console.log('click')}
+                  />
+               </Link>
                <MovieTitle>{m.title}</MovieTitle>
             </MovieCardDiv>
          ))}

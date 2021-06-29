@@ -20,6 +20,7 @@ export const MovieImage = styled.img`
    margin: 20px;
    transition: 0.3s ease;
    width: 250px;
+   cursor: pointer;
    &:hover {
       transition: 0.3s ease;
       transform: scale(1.1, 1.1);
