@@ -4,6 +4,7 @@ export const DivImage = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-flow: column wrap;
 `;
 export const MovieImage = styled.img`
    width: 700px;
@@ -16,5 +17,15 @@ export const MovieTitle = styled.h2`
    word-wrap: break-word;
    color: white;
    font-size: 1rem;
-   margin: 5px 0px 10px 20px;
+   margin: 30px 0px 10px 30px;
+`;
+export const MovieOverview = styled.h3`
+   color: white;
+   margin: 30px;
+   font-size: 1rem;
+`;
+
+export const DivTexts = styled.div`
+   display: flex;
+   flex-flow: column wrap;
 `;

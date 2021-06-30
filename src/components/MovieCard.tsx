@@ -5,12 +5,7 @@ import Modal from 'react-modal';
 import { useAppSelector } from '../app/hooks';
 import { MovieScreen } from './MovieScreen';
 
-import {
-   MoviesDiv,
-   MovieImage,
-   MovieTitle,
-   MovieCardDiv,
-} from '../styles/MovieCardStyle';
+import { MoviesDiv, MovieImage, MovieCardDiv } from '../styles/MovieCardStyle';
 
 export const MovieCard = () => {
    const { movies } = useAppSelector((state) => state.movie);
@@ -33,7 +28,6 @@ export const MovieCard = () => {
                      // onClick={openModal}
                   />
                </Link>
-               {/* <MovieTitle>{m.title}</MovieTitle> */}
             </MovieCardDiv>
          ))}
       </MoviesDiv>

@@ -3,7 +3,13 @@ import Modal from 'react-modal';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAppSelector } from '../app/hooks';
 import { getMovieById } from '../helpers/getMovieById';
-import { MovieImage, DivImage } from '../styles/MovieScreenStyles';
+import { MovieOverview } from '../styles/MovieScreenStyles';
+import {
+   MovieImage,
+   DivImage,
+   DivTexts,
+   MovieTitle,
+} from '../styles/MovieScreenStyles';
 
 export const MovieScreen = () => {
    const history = useHistory();
@@ -39,6 +45,10 @@ export const MovieScreen = () => {
          >
             <DivImage>
                <MovieImage src={movie?.url_back} />
+               <DivTexts>
+                  <MovieTitle>{movie?.title}</MovieTitle>
+                  <MovieOverview>{movie?.overview}</MovieOverview>
+               </DivTexts>
             </DivImage>
          </Modal>
       </div>
