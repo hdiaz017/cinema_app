@@ -13,23 +13,17 @@ export const MovieCardDiv = styled.div`
    flex-flow: column wrap;
    /* border: 1px solid red; */
    width: 290px;
-`;
-
-export const MovieImage = styled.img`
-   height: 350px;
-   margin: 20px;
    transition: 0.3s ease;
-   width: 250px;
-   cursor: pointer;
+   margin-bottom: 20px;
    &:hover {
       transition: 0.3s ease;
       transform: scale(1.1, 1.1);
    }
 `;
 
-export const MovieTitle = styled.h2`
-   word-wrap: break-word;
-   color: white;
-   font-size: 1rem;
-   margin: 5px 0px 10px 20px;
+export const MovieImage = styled.img`
+   height: 350px;
+   margin: 20px;
+   width: 250px;
+   cursor: pointer;
 `;

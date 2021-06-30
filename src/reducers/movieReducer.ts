@@ -1,14 +1,16 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 interface Movies {
    movies: Movie[];
    favorites: [];
    isLoading: boolean;
 }
-type Movie = {
-   id: number;
+export type Movie = {
+   id: number | string;
    poster_path: string;
-   url: string;
+   backdrop_path: string;
+   url_front: string;
+   url_back: string;
    title: string;
    overview: string;
    genre_ids: [];
@@ -30,7 +32,8 @@ export const fetchMovies = createAsyncThunk('movie/fetchMovies', async () => {
 
    return results.map((movie: Movie) => ({
       id: movie.id,
-      url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+      url_front: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+      url_back: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
       title: movie.title,
       overview: movie.overview,
       genre_ids: movie.genre_ids,
