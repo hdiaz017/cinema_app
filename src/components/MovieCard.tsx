@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Modal from 'react-modal';
 
 import { useAppSelector } from '../app/hooks';
-import { MovieScreen } from './MovieScreen';
 
 import { MoviesDiv, MovieImage, MovieCardDiv } from '../styles/MovieCardStyle';
 
