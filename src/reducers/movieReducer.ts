@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 interface Movies {
    movies: Movie[];
+   moviesBySearch: Movie[];
    favorites: [];
+   search: string;
    isLoading: boolean;
 }
 export type Movie = {
@@ -19,7 +21,9 @@ export type Movie = {
 
 const initialState: Movies = {
    movies: [],
+   moviesBySearch: [],
    favorites: [],
+   search: '',
    isLoading: false,
 };
 
@@ -40,6 +44,25 @@ export const fetchMovies = createAsyncThunk('movie/fetchMovies', async () => {
       vote_average: movie.vote_average,
    }));
 });
+export const fetchMoviesBySearch = createAsyncThunk(
+   'movie/fetchMoviesBySearch',
+   async (search: string) => {
+      const moviesRaw = await fetch(
+         `https://api.themoviedb.org/3/search/movie?api_key=7e8191c022ee7ad92efd691852a7f944&query=${search}`,
+      );
+      const { results } = await moviesRaw.json();
+
+      return results.map((movie: Movie) => ({
+         id: movie.id,
+         url_front: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+         url_back: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
+         title: movie.title,
+         overview: movie.overview,
+         genre_ids: movie.genre_ids,
+         vote_average: movie.vote_average,
+      }));
+   },
+);
 
 export const movieSlice = createSlice({
    name: 'movie',
@@ -48,6 +71,12 @@ export const movieSlice = createSlice({
    reducers: {
       setFavorites: (state, action) => {
          state.favorites = action.payload.favorites;
+      },
+      setSearch: (state, action) => {
+         state.search = action.payload;
+      },
+      removeSearchedMovies: (state) => {
+         state.moviesBySearch = [];
       },
    },
    extraReducers: (builder) => {
@@ -58,9 +87,17 @@ export const movieSlice = createSlice({
          state.isLoading = false;
          state.movies = action.payload;
       });
+      builder.addCase(fetchMoviesBySearch.pending, (state) => {
+         state.isLoading = true;
+      });
+      builder.addCase(fetchMoviesBySearch.fulfilled, (state, action) => {
+         state.isLoading = false;
+         state.moviesBySearch = action.payload;
+      });
    },
 });
 
-export const { setFavorites } = movieSlice.actions;
+export const { setFavorites, setSearch, removeSearchedMovies } =
+   movieSlice.actions;
 
 export default movieSlice.reducer;

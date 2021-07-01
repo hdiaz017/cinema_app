@@ -21,7 +21,6 @@ export const HomeScreen = () => {
    return (
       <HomeDiv>
          <NavBar />
-
          <MovieCard />
       </HomeDiv>
    );

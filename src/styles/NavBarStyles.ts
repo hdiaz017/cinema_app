@@ -13,6 +13,7 @@ export const TitleH1 = styled.h1`
    color: red;
    font-size: 2rem;
    margin-left: 50px;
+   cursor: pointer;
 `;
 
 export const InputSearch = styled.input`
@@ -29,4 +30,5 @@ export const InputSearch = styled.input`
 export const LogOutLink = styled.p`
    color: white;
    margin-right: 50px;
+   cursor: pointer;
 `;

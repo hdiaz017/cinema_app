@@ -16,7 +16,13 @@ export const MovieScreen = () => {
    const [modalIsOpen, setModalIsOpen] = useState(true);
    const { movieId } = useParams<{ movieId: string }>();
    const { movies } = useAppSelector((state) => state.movie);
-   const movie = getMovieById(movieId, movies);
+   const { moviesBySearch } = useAppSelector((state) => state.movie);
+   const movie =
+      moviesBySearch.length > 0
+         ? getMovieById(movieId, moviesBySearch)
+         : getMovieById(movieId, movies);
+   console.log(movie);
+
    const closeModal = () => {
       setModalIsOpen(false);
       history.goBack();
