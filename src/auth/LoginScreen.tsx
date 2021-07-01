@@ -9,7 +9,6 @@ import {
    TitleH2,
    LoginForm,
    InputLogin,
-   InputName,
    BackgroundDiv,
    FormDiv,
    SignInButton,
@@ -59,11 +58,11 @@ export const LoginScreen = () => {
    };
    return (
       <BackgroundDiv>
-         <TitleH1>Cinema App</TitleH1>
+         <TitleH1>NETFLIX</TitleH1>
          <LoginForm onSubmit={handleLogin}>
             <TitleH2>Sign In</TitleH2>
             <FormDiv>
-               <InputName
+               <InputLogin
                   id='login_user'
                   type='text'
                   placeholder='Username'

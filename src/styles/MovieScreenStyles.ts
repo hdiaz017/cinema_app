@@ -16,7 +16,7 @@ export const MovieImage = styled.img`
 export const MovieTitle = styled.h2`
    word-wrap: break-word;
    color: white;
-   font-size: 1rem;
+   font-size: 1.8rem;
    margin: 30px 0px 10px 30px;
 `;
 export const MovieOverview = styled.h3`

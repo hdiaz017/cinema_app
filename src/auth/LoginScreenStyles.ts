@@ -1,17 +1,21 @@
 import styled from 'styled-components';
 
 export const BackgroundDiv = styled.div`
+   display: flex;
+   flex-flow: column wrap;
    background-image: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80');
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   height: 100vh;
+   height: 100%;
 `;
 export const TitleH1 = styled.h1`
    color: red;
    font-size: 3rem;
    text-align: left;
-   padding: 50px 0px 0px 50px;
+   padding: 50px 0px 50px 50px;
+   margin: 0;
+   @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 `;
 
 export const LoginForm = styled.form`
@@ -20,6 +24,7 @@ export const LoginForm = styled.form`
    flex-flow: column wrap;
    justify-content: center;
    align-items: flex-start;
+   margin-bottom: 60px;
    margin-left: auto;
    margin-right: auto;
    padding-left: 60px;
@@ -40,18 +45,6 @@ export const FormDiv = styled.div`
    justify-content: center;
 `;
 
-export const InputName = styled.input`
-   background-color: #333;
-   color: #fff;
-   height: 50px;
-   border: none;
-   border-radius: 8px;
-   padding: 0px 12px;
-   width: 300px;
-   margin-top: 20px;
-   font-size: 1rem;
-   font-weight: 500;
-`;
 export const InputLogin = styled.input`
    background-color: #333;
    color: #fff;

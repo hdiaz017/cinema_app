@@ -6,7 +6,6 @@ export const MoviesDiv = styled.div`
    flex-flow: row wrap;
    justify-content: space-evenly;
    align-items: center;
-   border: 1px solid red;
 `;
 export const MovieCardDiv = styled.div`
    display: flex;
