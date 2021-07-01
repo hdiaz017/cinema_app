@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
 import { useAppDispatch } from '../app/hooks';
 import { useForm } from '../hooks/useForm';
 import { logout } from '../reducers/authReducer';
 import {
-   setSearch,
    fetchMoviesBySearch,
    removeSearchedMovies,
 } from '../reducers/movieReducer';
@@ -18,7 +16,7 @@ import {
 export const NavBar = () => {
    const history = useHistory();
    const dispatch = useAppDispatch();
-   const [{ search }, handleInputChange, reset] = useForm({
+   const [{ search }, handleInputChange] = useForm({
       search: '',
    });
 
