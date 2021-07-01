@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MoviesDiv = styled.div`
-   background-color: black;
+   background-color: #141414;
    display: flex;
    flex-flow: row wrap;
    justify-content: space-evenly;

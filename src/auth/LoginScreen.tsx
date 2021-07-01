@@ -12,7 +12,7 @@ import {
    BackgroundDiv,
    FormDiv,
    SignInButton,
-} from './LoginScreenStyles';
+} from '../styles/LoginScreenStyles';
 
 export const LoginScreen = () => {
    const dispatch = useAppDispatch();
