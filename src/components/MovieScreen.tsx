@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { getMovieById } from '../helpers/getMovieById';
-import { Movie, removeFavorites, setFavorites } from '../reducers/movieReducer';
+import { removeFavorites, setFavorites } from '../reducers/movieReducer';
 import { DivFavs, LikeSolid, DislikeSolid } from '../styles/MovieScreenStyles';
 import {
    DivInfo,

@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import { useForm } from '../hooks/useForm';
 import { logout } from '../reducers/authReducer';
 import {
@@ -13,11 +13,10 @@ import {
    InputSearch,
    LogOutLink,
 } from '../styles/NavBarStyles';
-import { useEffect } from 'react';
 
 export const NavBar = () => {
    const history = useHistory();
-   const stateSearch = useAppSelector((state) => state.movie.search);
+
    const dispatch = useAppDispatch();
    const [{ search }, handleInputChange] = useForm({
       search: '',
