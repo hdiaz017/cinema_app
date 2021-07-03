@@ -4,6 +4,7 @@ import { Location } from 'history';
 import { FavoritesScreen } from '../components/FavoritesScreen';
 import { HomeScreen } from '../components/HomeScreen';
 import { MovieScreen } from '../components/MovieScreen';
+import { NavBar } from '../components/NavBar';
 
 export const DashboardRouter = () => {
    let location =
@@ -11,6 +12,7 @@ export const DashboardRouter = () => {
    const background = location.state?.background;
    return (
       <div>
+         <NavBar />
          <Switch location={background || location}>
             <Route exact path='/favorites' component={FavoritesScreen} />
             {/* <Route exact path='/movie/:movideid' children={MovieScreen} /> */}

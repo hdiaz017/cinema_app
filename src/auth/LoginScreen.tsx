@@ -58,7 +58,7 @@ export const LoginScreen = () => {
    };
    return (
       <BackgroundDiv>
-         <TitleH1>NETFLIX</TitleH1>
+         <TitleH1>CINETFLIX</TitleH1>
          <LoginForm onSubmit={handleLogin}>
             <TitleH2>Sign In</TitleH2>
             <FormDiv>

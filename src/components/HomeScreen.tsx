@@ -5,8 +5,10 @@ import { useAppDispatch } from '../app/hooks';
 
 import { fetchMovies } from '../reducers/movieReducer';
 import { MovieCard } from './MovieCard';
-import { NavBar } from './NavBar';
 
+const HomeDiv = styled.div`
+   background-color: #141414;
+`;
 export const HomeScreen = () => {
    const dispatch = useAppDispatch();
 
@@ -14,13 +16,8 @@ export const HomeScreen = () => {
       dispatch(fetchMovies());
    }, [dispatch]);
 
-   const HomeDiv = styled.div`
-      background-color: #141414;
-   `;
-
    return (
       <HomeDiv>
-         <NavBar />
          <MovieCard />
       </HomeDiv>
    );

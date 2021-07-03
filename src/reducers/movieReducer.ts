@@ -3,12 +3,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 interface Movies {
    movies: Movie[];
    moviesBySearch: Movie[];
-   favorites: [];
+   favorites: number[];
    search: string;
    isLoading: boolean;
 }
 export type Movie = {
-   id: number | string;
+   id: number;
    poster_path: string;
    backdrop_path: string;
    url_front: string;
@@ -70,7 +70,19 @@ export const movieSlice = createSlice({
    initialState,
    reducers: {
       setFavorites: (state, action) => {
-         state.favorites = action.payload.favorites;
+         state.favorites.push(action.payload);
+      },
+      removeFavorites: (state, action) => {
+         console.log(action.payload);
+
+         const movieToRemove = state.favorites.findIndex(
+            (m) => m === action.payload,
+         );
+         console.log(movieToRemove);
+
+         if (movieToRemove !== -1) {
+            state.favorites.splice(movieToRemove, 1);
+         }
       },
       setSearch: (state, action) => {
          state.search = action.payload;
@@ -97,7 +109,11 @@ export const movieSlice = createSlice({
    },
 });
 
-export const { setFavorites, setSearch, removeSearchedMovies } =
-   movieSlice.actions;
+export const {
+   setFavorites,
+   removeFavorites,
+   setSearch,
+   removeSearchedMovies,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;
