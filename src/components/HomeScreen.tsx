@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 
 import { fetchMovies } from '../reducers/movieReducer';
-import { MovieCard } from './MovieCard';
+
+import { MovieList } from './MovieList';
 
 const HomeDiv = styled.div`
    background-color: #141414;
 `;
 export const HomeScreen = () => {
    const dispatch = useAppDispatch();
+   const { movies, moviesBySearch } = useAppSelector((state) => state.movie);
 
    useEffect(() => {
       dispatch(fetchMovies());
@@ -18,7 +20,7 @@ export const HomeScreen = () => {
 
    return (
       <HomeDiv>
-         <MovieCard />
+         <MovieList homeMovies={movies} searchedMovies={moviesBySearch} />
       </HomeDiv>
    );
 };

@@ -22,9 +22,12 @@ export const NavBar = () => {
       search: '',
    });
 
-   const handleClick = () => {
+   const handleClickHome = () => {
       history.push('/');
       dispatch(removeSearchedMovies());
+   };
+   const handleClickFavs = () => {
+      history.push('/favorites');
    };
 
    const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -38,7 +41,9 @@ export const NavBar = () => {
    };
    return (
       <NavDiv>
-         <TitleH1 onClick={handleClick}>CINETFLIX</TitleH1>
+         <TitleH1 onClick={handleClickHome}>CINETFLIX</TitleH1>
+         <TitleH1 onClick={handleClickFavs}>favs</TitleH1>
+
          <form onSubmit={handleSubmit}>
             <InputSearch
                placeholder='Títulos, personas, géneros'

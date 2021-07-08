@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 interface Movies {
    movies: Movie[];
    moviesBySearch: Movie[];
-   favorites: number[];
+   favorites: Movie[];
    search: string;
    isLoading: boolean;
 }
@@ -76,7 +76,7 @@ export const movieSlice = createSlice({
          console.log(action.payload);
 
          const movieToRemove = state.favorites.findIndex(
-            (m) => m === action.payload,
+            (m) => m.id === action.payload,
          );
          console.log(movieToRemove);
 

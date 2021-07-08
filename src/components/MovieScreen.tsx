@@ -38,20 +38,21 @@ export const MovieScreen = () => {
       history.goBack();
    };
 
-   let isFavorite: boolean = movie ? favorites.includes(movie?.id) : false;
+   let isFavorite: boolean = movie ? favorites.includes(movie) : false;
+   console.log(isFavorite);
 
    const handleLike = () => {
       if (movie) {
          isFavorite
             ? dispatch(removeFavorites(movie?.id))
-            : dispatch(setFavorites(movie.id));
+            : dispatch(setFavorites(movie));
       }
    };
    const handleDislike = () => {
       if (movie) {
          isFavorite
             ? dispatch(removeFavorites(movie?.id))
-            : dispatch(setFavorites(movie.id));
+            : dispatch(setFavorites(movie));
       }
    };
 
@@ -77,7 +78,13 @@ export const MovieScreen = () => {
             style={customStyles}
          >
             <DivImage>
-               <MovieImage src={movie?.url_back} />
+               <MovieImage
+                  src={
+                     movie?.url_back.indexOf('null') === -1
+                        ? movie?.url_back
+                        : 'https://images.unsplash.com/photo-1615964474833-d2d2781aa71d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1502&q=80'
+                  }
+               />
                <MovieInfo>
                   <DivTexts>
                      <DivInfo>
