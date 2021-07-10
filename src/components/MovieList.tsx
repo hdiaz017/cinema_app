@@ -17,7 +17,7 @@ export const MovieList: FC<MovieListType> = ({
    favoritesMovies,
 }) => {
    let movies: Movie[] = [];
-   if (favoritesMovies && favoritesMovies.length > 1) movies = favoritesMovies;
+   if (favoritesMovies && favoritesMovies.length >= 1) movies = favoritesMovies;
    else if (searchedMovies && searchedMovies.length > 1) {
       movies = searchedMovies;
    } else if (homeMovies && homeMovies.length > 1) {

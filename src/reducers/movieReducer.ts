@@ -4,6 +4,7 @@ interface Movies {
    movies: Movie[];
    moviesBySearch: Movie[];
    favorites: Movie[];
+   notFavorites: Movie[];
    search: string;
    isLoading: boolean;
 }
@@ -23,6 +24,7 @@ const initialState: Movies = {
    movies: [],
    moviesBySearch: [],
    favorites: [],
+   notFavorites: [],
    search: '',
    isLoading: false,
 };
@@ -84,6 +86,21 @@ export const movieSlice = createSlice({
             state.favorites.splice(movieToRemove, 1);
          }
       },
+      setNotFavorites: (state, action) => {
+         state.notFavorites.push(action.payload);
+      },
+      removeNotFavorites: (state, action) => {
+         console.log(action.payload);
+
+         const movieToRemove = state.notFavorites.findIndex(
+            (m) => m.id === action.payload,
+         );
+         console.log(movieToRemove);
+
+         if (movieToRemove !== -1) {
+            state.notFavorites.splice(movieToRemove, 1);
+         }
+      },
       setSearch: (state, action) => {
          state.search = action.payload;
       },
@@ -112,6 +129,8 @@ export const movieSlice = createSlice({
 export const {
    setFavorites,
    removeFavorites,
+   setNotFavorites,
+   removeNotFavorites,
    setSearch,
    removeSearchedMovies,
 } = movieSlice.actions;

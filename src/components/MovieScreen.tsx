@@ -3,7 +3,12 @@ import Modal from 'react-modal';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { getMovieById } from '../helpers/getMovieById';
-import { removeFavorites, setFavorites } from '../reducers/movieReducer';
+import {
+   removeFavorites,
+   removeNotFavorites,
+   setFavorites,
+   setNotFavorites,
+} from '../reducers/movieReducer';
 import { DivFavs, LikeSolid, DislikeSolid } from '../styles/MovieScreenStyles';
 import {
    DivInfo,
@@ -26,7 +31,9 @@ export const MovieScreen = () => {
    const [modalIsOpen, setModalIsOpen] = useState(true);
    const { movieId } = useParams<{ movieId: string }>();
    const { movies } = useAppSelector((state) => state.movie);
-   const { moviesBySearch, favorites } = useAppSelector((state) => state.movie);
+   const { moviesBySearch, favorites, notFavorites } = useAppSelector(
+      (state) => state.movie,
+   );
 
    const movie =
       moviesBySearch.length > 0
@@ -38,11 +45,15 @@ export const MovieScreen = () => {
       history.goBack();
    };
 
-   let isFavorite: boolean = movie ? favorites.includes(movie) : false;
+   let isFavorite: boolean = favorites.some((m) => m.id === movie?.id);
+   let isNotFavorite: boolean = notFavorites.some((m) => m.id === movie?.id);
    console.log(isFavorite);
 
    const handleLike = () => {
       if (movie) {
+         isNotFavorite
+            ? dispatch(removeNotFavorites(movie?.id))
+            : console.log('null');
          isFavorite
             ? dispatch(removeFavorites(movie?.id))
             : dispatch(setFavorites(movie));
@@ -52,7 +63,10 @@ export const MovieScreen = () => {
       if (movie) {
          isFavorite
             ? dispatch(removeFavorites(movie?.id))
-            : dispatch(setFavorites(movie));
+            : console.log('null');
+         isNotFavorite
+            ? dispatch(removeNotFavorites(movie?.id))
+            : dispatch(setNotFavorites(movie));
       }
    };
 
@@ -95,7 +109,7 @@ export const MovieScreen = () => {
                            ) : (
                               <LikeRegular size='28' onClick={handleLike} />
                            )}
-                           {isFavorite ? (
+                           {!isNotFavorite ? (
                               <DislikeRegular
                                  size='28'
                                  onClick={handleDislike}
